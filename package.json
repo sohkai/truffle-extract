@@ -1,0 +1,23 @@
+{
+  "name": "truffle-extract",
+  "version": "1.0.0",
+  "description": "Extract information from truffle build files",
+  "author": "Brett Sun",
+  "bugs": {
+    "url": "https://github.com/sohkai/truffle-extract/issues"
+  },
+  "homepage": "https://github.com/sohkai/truffle-extract#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sohkai/truffle-extract.git"
+  },
+  "license": "MIT",
+  "keywords": [
+    "truffle",
+    "solidity"
+  ],
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}

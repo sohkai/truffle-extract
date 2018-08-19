@@ -12,7 +12,7 @@ const truffleExtract = (keys, options = {}, cb = noop) => {
     options = {}
   }
 
-  const { buildDir, outputDir, warning, verbose } = options
+  const { buildDir, compile, outputDir, warning, verbose } = options
   assert(keys.length > 0, 'Must supply at least one key to extract')
   assert(
     buildDir,
@@ -22,6 +22,19 @@ const truffleExtract = (keys, options = {}, cb = noop) => {
     outputDir,
     'Must supply an output directory to put the extracted files'
   )
+
+  if (compile) {
+    if (verbose) {
+      console.log('Compiling...')
+    }
+
+    const { execSync } = require('child_process')
+    try {
+      execSync('npx truffle compile')
+    } catch (e) {
+      cb(e)
+    }
+  }
 
   fs.lstat(buildDir, (err, stat) => {
     if (err) {

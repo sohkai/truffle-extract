@@ -28,6 +28,12 @@ const argv = require('yargs')
     group: 'Directories',
     type: 'string',
   })
+  .option('compile', {
+    alias: 'c',
+    default: 'true',
+    describe: 'Compile before extracting',
+    type: 'boolean',
+  })
   .option('warning', {
     alias: 'w',
     default: true,
@@ -46,6 +52,7 @@ const argv = require('yargs')
 const keys = argv.keys
 const buildDir = argv['build-dir']
 const outputDir = argv.output
+const compile = argv.compile
 const warning = argv.warning
 const verbose = argv.verbose
 
@@ -53,8 +60,12 @@ if (!verbose) {
   console.log('Extracting files...\n')
 }
 
-truffleExtract(keys, { buildDir, outputDir, warning, verbose }, err => {
-  if (err) {
-    console.error('Unexpected failure:', err)
+truffleExtract(
+  keys,
+  { buildDir, compile, outputDir, warning, verbose },
+  err => {
+    if (err) {
+      console.error('Unexpected failure:', err)
+    }
   }
-})
+)

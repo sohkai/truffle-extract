@@ -13,7 +13,10 @@ const truffleExtract = (keys, options = {}, cb = noop) => {
   }
 
   const { buildDir, compile, outputDir, warning, verbose } = options
-  assert(keys.length > 0, 'Must supply at least one key to extract')
+  assert(
+    Array.isArray(keys) && keys.length > 0,
+    'Must supply at least one key to extract'
+  )
   assert(
     buildDir,
     'Must supply a build directory where the truffle build files are located'

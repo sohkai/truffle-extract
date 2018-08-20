@@ -35,7 +35,9 @@ const truffleExtract = (keys, options = {}, cb = noop) => {
     try {
       execSync('npx truffle compile')
     } catch (e) {
-      cb(e)
+      // eslint-disable-next-line standard/no-callback-literal
+      cb(`compilation error.\n\n${e.stdout}`)
+      return
     }
   }
 

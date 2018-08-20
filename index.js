@@ -33,7 +33,10 @@ const truffleExtract = (keys, options = {}, cb = noop) => {
 
     const { execSync } = require('child_process')
     try {
-      execSync('npx truffle compile')
+      const output = execSync('npx truffle compile', { encoding: 'utf8' })
+      if (verbose) {
+        console.log(output)
+      }
     } catch (e) {
       // eslint-disable-next-line standard/no-callback-literal
       cb(`compilation error.\n\n${e.stdout}`)

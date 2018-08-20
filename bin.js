@@ -66,6 +66,7 @@ truffleExtract(
   err => {
     if (err) {
       console.error('Unexpected failure:', err)
+      process.exit(1)
     }
   }
 )

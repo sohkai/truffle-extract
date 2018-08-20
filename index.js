@@ -101,7 +101,7 @@ const truffleExtract = (keys, options = {}, cb = noop) => {
             { encoding: 'utf8' },
             err => {
               if (err) {
-                console.err(
+                console.error(
                   `Unexpected failure writing ${file} to ${outputDir}`,
                   err
                 )
